@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://ct8otfdtxe1xu"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_aed7c"]
+[ext_resource type="Texture2D" uid="uid://dlvxpex5mvs27" path="res://Assets/Sprites/player/player_idle.png" id="2_1dubn"]
+[ext_resource type="Texture2D" uid="uid://bu6fxa0q2rk2n" path="res://Assets/Sprites/player/player_run.png" id="3_h51en"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bfylq"]
+radius = 25.0
+height = 120.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dfye"]
+atlas = ExtResource("2_1dubn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2dwr"]
+atlas = ExtResource("3_h51en")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s66w"]
+atlas = ExtResource("3_h51en")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp7gn"]
+atlas = ExtResource("3_h51en")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf6v6"]
+atlas = ExtResource("3_h51en")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ikosh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dfye")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2dwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s66w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp7gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf6v6")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_aed7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bfylq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1440
+limit_top = -810
+limit_right = 1440
+limit_bottom = 810
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ikosh")
+animation = &"Run"

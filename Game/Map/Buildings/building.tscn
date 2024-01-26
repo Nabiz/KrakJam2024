@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://df4pwy1v5id7m"]
+
+[ext_resource type="Script" path="res://Map/Buildings/building.gd" id="1_fncn4"]
+[ext_resource type="Texture2D" uid="uid://npfsynx3gwtr" path="res://icon.svg" id="1_qa540"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qr6g"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67k4m"]
+size = Vector2(128, 128)
+
+[node name="Building" type="StaticBody2D"]
+script = ExtResource("1_fncn4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qa540")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3qr6g")
+
+[node name="BuildArea" type="Area2D" parent="."]
+position = Vector2(0, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildArea"]
+shape = SubResource("RectangleShape2D_67k4m")
+
+[connection signal="body_entered" from="BuildArea" to="." method="_on_build_area_body_entered"]
+[connection signal="body_exited" from="BuildArea" to="." method="_on_build_area_body_exited"]

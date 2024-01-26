@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf4a4hq58f3kg"]
+
+[ext_resource type="PackedScene" uid="uid://ct8otfdtxe1xu" path="res://Player/player.tscn" id="1_og22u"]
+[ext_resource type="PackedScene" uid="uid://c4d555e6d0a6g" path="res://Map/map.tscn" id="2_abdh4"]
+[ext_resource type="PackedScene" uid="uid://df4pwy1v5id7m" path="res://Map/Buildings/building.tscn" id="3_3mb3m"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_og22u")]
+position = Vector2(1010, -393)
+
+[node name="Map" parent="." instance=ExtResource("2_abdh4")]
+z_index = -10
+
+[node name="Building" parent="." instance=ExtResource("3_3mb3m")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(366, -430)

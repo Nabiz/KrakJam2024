@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4d555e6d0a6g"]
+
+[ext_resource type="Texture2D" uid="uid://ddwleorcbsha5" path="res://Assets/Sprites/Map/mapaBlockout.png" id="1_4r6d0"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4r6d0")
