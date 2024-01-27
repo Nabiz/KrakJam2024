@@ -5,6 +5,7 @@ class_name Player
 const SPEED = 300.0
 
 @onready var animation = $AnimatedSprite2D
+@onready var requires_ui = $Requires
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_building = null
@@ -33,8 +34,10 @@ func movement():
 	animation.flip_h = true if velocity.x < 0.01 else false
 	move_and_slide()
 
+func show_requires_ui(show_ui=true):
+	requires_ui.visible = show_ui
+
 func player_build():
 	if Input.is_action_just_pressed("ui_select"):
 		if current_building:
-			current_building.is_build = true
 			current_building.build()

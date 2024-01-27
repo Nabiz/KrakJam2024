@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct8otfdtxe1xu"]
+[gd_scene load_steps=12 format=3 uid="uid://ct8otfdtxe1xu"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_aed7c"]
 [ext_resource type="Texture2D" uid="uid://dlvxpex5mvs27" path="res://Assets/Sprites/player/player_idle.png" id="2_1dubn"]
 [ext_resource type="Texture2D" uid="uid://bu6fxa0q2rk2n" path="res://Assets/Sprites/player/player_run.png" id="3_h51en"]
+[ext_resource type="PackedScene" uid="uid://dyyvg0jc333k5" path="res://GUI/requires.tscn" id="4_qelp4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bfylq"]
-radius = 25.0
-height = 120.0
+radius = 16.0
+height = 48.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8dfye"]
 atlas = ExtResource("2_1dubn")
@@ -66,6 +67,7 @@ motion_mode = 1
 script = ExtResource("1_aed7c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 27)
 shape = SubResource("CapsuleShape2D_bfylq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -77,3 +79,7 @@ limit_bottom = 810
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ikosh")
 animation = &"Run"
+
+[node name="Requires" parent="." instance=ExtResource("4_qelp4")]
+visible = false
+z_index = 20

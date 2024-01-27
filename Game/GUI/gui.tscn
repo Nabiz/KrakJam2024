@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4myacifphgq7"]
+
+[ext_resource type="Script" path="res://GUI/gui.gd" id="1_uucm5"]
+[ext_resource type="Texture2D" uid="uid://4hwaddchbgum" path="res://Assets/Sprites/GUI/money_gui.png" id="2_1wslr"]
+[ext_resource type="Texture2D" uid="uid://d1cu6uwpylhp8" path="res://Assets/Sprites/GUI/wood_gui.png" id="3_0dluq"]
+[ext_resource type="Texture2D" uid="uid://ddefvf4om5jgs" path="res://Assets/Sprites/GUI/brick_gui.png" id="4_jqny2"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_uucm5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Resources" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Money" type="HBoxContainer" parent="MarginContainer/Resources"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Resources/Money"]
+layout_mode = 2
+texture = ExtResource("2_1wslr")
+
+[node name="Label" type="Label" parent="MarginContainer/Resources/Money"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "x 255"
+
+[node name="Wood" type="HBoxContainer" parent="MarginContainer/Resources"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Resources/Wood"]
+layout_mode = 2
+texture = ExtResource("3_0dluq")
+
+[node name="Label" type="Label" parent="MarginContainer/Resources/Wood"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "x 20
+"
+
+[node name="Rock" type="HBoxContainer" parent="MarginContainer/Resources"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Resources/Rock"]
+layout_mode = 2
+texture = ExtResource("4_jqny2")
+
+[node name="Label" type="Label" parent="MarginContainer/Resources/Rock"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "x 20
+"

@@ -1,8 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4d555e6d0a6g"]
+[gd_scene load_steps=4 format=3 uid="uid://c4d555e6d0a6g"]
 
 [ext_resource type="Texture2D" uid="uid://ddwleorcbsha5" path="res://Assets/Sprites/Map/mapaBlockout.png" id="1_4r6d0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2el4f"]
+size = Vector2(3000, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssd4n"]
+size = Vector2(20, 2000)
 
 [node name="Map" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4r6d0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 800)
+shape = SubResource("RectangleShape2D_2el4f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -807)
+shape = SubResource("RectangleShape2D_2el4f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1437, 0)
+shape = SubResource("RectangleShape2D_ssd4n")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1441, 0)
+shape = SubResource("RectangleShape2D_ssd4n")

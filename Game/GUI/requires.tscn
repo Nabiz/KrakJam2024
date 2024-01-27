@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyyvg0jc333k5"]
+
+[ext_resource type="Texture2D" uid="uid://4hwaddchbgum" path="res://Assets/Sprites/GUI/money_gui.png" id="1_ml3fa"]
+
+[node name="Requires" type="PanelContainer"]
+offset_right = 164.0
+offset_bottom = 182.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Water Well"
+
+[node name="Money" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Money"]
+layout_mode = 2
+texture = ExtResource("1_ml3fa")
+
+[node name="Label" type="Label" parent="VBoxContainer/Money"]
+layout_mode = 2
+text = "x 20"
+
+[node name="Money2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Money2"]
+layout_mode = 2
+texture = ExtResource("1_ml3fa")
+
+[node name="Label" type="Label" parent="VBoxContainer/Money2"]
+layout_mode = 2
+text = "x 20"
+
+[node name="Money3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Money3"]
+layout_mode = 2
+texture = ExtResource("1_ml3fa")
+
+[node name="Label" type="Label" parent="VBoxContainer/Money3"]
+layout_mode = 2
+text = "x 20"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Press Space To Build
+"
