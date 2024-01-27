@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cf4a4hq58f3kg"]
+[gd_scene load_steps=23 format=3 uid="uid://cf4a4hq58f3kg"]
 
 [ext_resource type="PackedScene" uid="uid://ct8otfdtxe1xu" path="res://Player/player.tscn" id="1_og22u"]
 [ext_resource type="PackedScene" uid="uid://c4d555e6d0a6g" path="res://Map/map.tscn" id="2_abdh4"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bm58yfhnsh0lo" path="res://Assets/Sprites/Buildings/hospital.png" id="9_wt6jb"]
 [ext_resource type="Texture2D" uid="uid://cx40e1fdxguhm" path="res://Assets/Sprites/Buildings/houses.png" id="10_3srk0"]
 [ext_resource type="PackedScene" uid="uid://b4myacifphgq7" path="res://GUI/gui.tscn" id="12_ecyf5"]
+[ext_resource type="PackedScene" uid="uid://buwhqcb7s6guj" path="res://Villager/villager.tscn" id="13_6i7r3"]
+[ext_resource type="PackedScene" uid="uid://027n7u5uo7ih" path="res://Map/storage.tscn" id="14_e5c34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r002d"]
 size = Vector2(321, 218)
@@ -59,14 +61,11 @@ shape = SubResource("RectangleShape2D_r002d")
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_qrfpr")
 
-[node name="Building" parent="." instance=ExtResource("3_3mb3m")]
-position = Vector2(-12, 462)
-
-[node name="Fields" parent="." instance=ExtResource("3_3mb3m")]
+[node name="Fields" parent="." node_paths=PackedStringArray("storage") instance=ExtResource("3_3mb3m")]
 position = Vector2(-1088, 213)
 money = 20
-wood = 10
-rock = 10
+building_name = "Farm"
+storage = NodePath("../StorageFood")
 
 [node name="Sprite2D" parent="Fields" index="0"]
 position = Vector2(121, 161)
@@ -79,8 +78,13 @@ shape = SubResource("RectangleShape2D_ngpfw")
 [node name="BuildArea" parent="Fields" index="2"]
 position = Vector2(-43, 311)
 
-[node name="Studnia" parent="." instance=ExtResource("3_3mb3m")]
+[node name="StorageFood" parent="." instance=ExtResource("14_e5c34")]
+position = Vector2(-1296, 414)
+storage_id = 4
+
+[node name="Studnia" parent="." node_paths=PackedStringArray("storage") instance=ExtResource("3_3mb3m")]
 position = Vector2(27, 40)
+storage = NodePath("../StorageWater")
 
 [node name="Sprite2D" parent="Studnia" index="0"]
 scale = Vector2(0.5, 0.5)
@@ -93,8 +97,13 @@ shape = SubResource("RectangleShape2D_4yomp")
 [node name="BuildArea" parent="Studnia" index="2"]
 position = Vector2(213, 119)
 
-[node name="School" parent="." instance=ExtResource("3_3mb3m")]
+[node name="StorageWater" parent="." instance=ExtResource("14_e5c34")]
+position = Vector2(100, 139)
+
+[node name="School" parent="." node_paths=PackedStringArray("storage") instance=ExtResource("3_3mb3m")]
 position = Vector2(670, 33)
+building_name = "School"
+storage = NodePath("../StorageBook")
 
 [node name="Sprite2D" parent="School" index="0"]
 texture = ExtResource("6_oxwee")
@@ -106,8 +115,14 @@ shape = SubResource("RectangleShape2D_xkq57")
 [node name="BuildArea" parent="School" index="2"]
 position = Vector2(-69, 274)
 
-[node name="Soccer" parent="." instance=ExtResource("3_3mb3m")]
+[node name="StorageBook" parent="." instance=ExtResource("14_e5c34")]
+position = Vector2(761, 278)
+storage_id = 5
+
+[node name="Soccer" parent="." node_paths=PackedStringArray("storage") instance=ExtResource("3_3mb3m")]
 position = Vector2(1119, 393)
+building_name = "Soccer Pitch"
+storage = NodePath("../StorageBall")
 
 [node name="Sprite2D" parent="Soccer" index="0"]
 position = Vector2(37, 14)
@@ -120,8 +135,14 @@ shape = SubResource("RectangleShape2D_wa8rx")
 [node name="BuildArea" parent="Soccer" index="2"]
 position = Vector2(34, 94)
 
-[node name="Church" parent="." instance=ExtResource("3_3mb3m")]
+[node name="StorageBall" parent="." instance=ExtResource("14_e5c34")]
+position = Vector2(887, 594)
+storage_id = 3
+
+[node name="Church" parent="." node_paths=PackedStringArray("storage") instance=ExtResource("3_3mb3m")]
 position = Vector2(368, -539)
+building_name = "Church"
+storage = NodePath("../StorageBible")
 
 [node name="Sprite2D" parent="Church" index="0"]
 texture = ExtResource("5_i3qdm")
@@ -133,8 +154,14 @@ shape = SubResource("RectangleShape2D_w3kbo")
 [node name="BuildArea" parent="Church" index="2"]
 position = Vector2(-147, 319)
 
+[node name="StorageBible" parent="." instance=ExtResource("14_e5c34")]
+position = Vector2(447, -252)
+storage_id = 2
+
 [node name="Houses" parent="." instance=ExtResource("3_3mb3m")]
 position = Vector2(-362, -538)
+building_name = "Houses"
+has_storage = false
 
 [node name="Sprite2D" parent="Houses" index="0"]
 scale = Vector2(0.75, 0.75)
@@ -147,8 +174,10 @@ shape = SubResource("RectangleShape2D_rp87r")
 [node name="BuildArea" parent="Houses" index="2"]
 position = Vector2(-42, 242)
 
-[node name="Hospital" parent="." instance=ExtResource("3_3mb3m")]
+[node name="Hospital" parent="." node_paths=PackedStringArray("storage") instance=ExtResource("3_3mb3m")]
 position = Vector2(-1102, -464)
+building_name = "Hospital"
+storage = NodePath("../StoragePill")
 
 [node name="Sprite2D" parent="Hospital" index="0"]
 texture = ExtResource("9_wt6jb")
@@ -159,6 +188,27 @@ shape = SubResource("RectangleShape2D_qb5sm")
 
 [node name="BuildArea" parent="Hospital" index="2"]
 position = Vector2(170, 220)
+
+[node name="StoragePill" parent="." instance=ExtResource("14_e5c34")]
+position = Vector2(-1226, -308)
+storage_id = 6
+
+[node name="Villager" parent="." instance=ExtResource("13_6i7r3")]
+position = Vector2(-195, 112)
+
+[node name="Villager2" parent="." instance=ExtResource("13_6i7r3")]
+position = Vector2(-381, -32)
+
+[node name="Villager3" parent="." instance=ExtResource("13_6i7r3")]
+position = Vector2(-293, 302)
+
+[node name="Villager4" parent="." instance=ExtResource("13_6i7r3")]
+position = Vector2(-612, -21)
+desire_id = 5
+
+[node name="Villager5" parent="." instance=ExtResource("13_6i7r3")]
+position = Vector2(-455, -122)
+desire_id = 2
 
 [editable path="Fields"]
 [editable path="Studnia"]

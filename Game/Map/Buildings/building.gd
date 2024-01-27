@@ -11,6 +11,10 @@ var is_build = false
 @export var wood = 0
 @export var rock = 0
 
+@export var building_name = "Water Well"
+@export var has_storage = true
+@export var storage: Storage = null
+
 func _ready():
 	sprite.visible = false
 	collision.disabled = true
@@ -27,6 +31,8 @@ func build():
 		is_build = true
 		sprite.visible = true
 		collision.set_deferred("disabled", false)
+		if has_storage:
+			storage.activate_storage()
 		build_area.queue_free()
 		gray_shader.queue_free()
 

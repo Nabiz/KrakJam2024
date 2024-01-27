@@ -1,54 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyyvg0jc333k5"]
+[gd_scene load_steps=6 format=3 uid="uid://dyyvg0jc333k5"]
 
-[ext_resource type="Texture2D" uid="uid://4hwaddchbgum" path="res://Assets/Sprites/GUI/money_gui.png" id="1_ml3fa"]
+[ext_resource type="Script" path="res://GUI/requires.gd" id="1_2u402"]
+[ext_resource type="Texture2D" uid="uid://de7bhyyphcyuu" path="res://Assets/Sprites/GUI/money.png" id="1_25m8s"]
+[ext_resource type="Texture2D" uid="uid://vsdt58smxkix" path="res://Assets/Sprites/GUI/wood.png" id="2_tk3cq"]
+[ext_resource type="Texture2D" uid="uid://lnvt4131w28t" path="res://Assets/Sprites/GUI/brick.png" id="3_ay3bo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxj36"]
+bg_color = Color(0.203922, 0.545098, 0.721569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 5
 
 [node name="Requires" type="PanelContainer"]
 offset_right = 164.0
 offset_bottom = 182.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxj36")
+script = ExtResource("1_2u402")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Water Well"
 
-[node name="Money" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Money" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Money"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Money"]
 layout_mode = 2
-texture = ExtResource("1_ml3fa")
+texture = ExtResource("1_25m8s")
 
-[node name="Label" type="Label" parent="VBoxContainer/Money"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Money"]
 layout_mode = 2
 text = "x 20"
 
-[node name="Money2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Wood" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Money2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Wood"]
 layout_mode = 2
-texture = ExtResource("1_ml3fa")
+texture = ExtResource("2_tk3cq")
 
-[node name="Label" type="Label" parent="VBoxContainer/Money2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Wood"]
 layout_mode = 2
 text = "x 20"
 
-[node name="Money3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Brick" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Money3"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Brick"]
 layout_mode = 2
-texture = ExtResource("1_ml3fa")
+texture = ExtResource("3_ay3bo")
 
-[node name="Label" type="Label" parent="VBoxContainer/Money3"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Brick"]
 layout_mode = 2
 text = "x 20"
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Press Space To Build
+text = "Press SPACE To Build
 "

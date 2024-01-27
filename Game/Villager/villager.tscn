@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://buwhqcb7s6guj"]
+
+[ext_resource type="Script" path="res://Villager/villager.gd" id="1_12hkn"]
+[ext_resource type="Texture2D" uid="uid://bbay34reoovjl" path="res://Assets/Sprites/villager/villager_cloud.png" id="2_1etwb"]
+[ext_resource type="Texture2D" uid="uid://dbpdo02cga2hl" path="res://Assets/Sprites/villager/villager_sad_idle.png" id="2_d6v4d"]
+[ext_resource type="Texture2D" uid="uid://bfcjbohxwxxcf" path="res://Assets/Sprites/items/items.png" id="4_3e7dn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhr1j"]
+size = Vector2(42, 67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3y5nx"]
+radius = 50.0
+
+[node name="Villager" type="CharacterBody2D"]
+script = ExtResource("1_12hkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d6v4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vhr1j")
+
+[node name="CloudSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = 90
+position = Vector2(36, -57)
+texture = ExtResource("2_1etwb")
+
+[node name="desire" type="Sprite2D" parent="CloudSprite"]
+position = Vector2(-2, -13)
+texture = ExtResource("4_3e7dn")
+hframes = 7
+frame = 1
+
+[node name="ItemArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D"]
+shape = SubResource("CircleShape2D_3y5nx")
+
+[connection signal="body_entered" from="ItemArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="ItemArea2D" to="." method="_on_area_2d_body_exited"]
